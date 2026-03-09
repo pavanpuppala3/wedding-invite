@@ -42,20 +42,10 @@ const bgMusic = document.getElementById("bgMusic");
 const musicToggle = document.getElementById("musicToggle");
 let isPlaying = false;
 
-// Auto-play on page load
-window.addEventListener('load', () => {
-    bgMusic.play().then(() => {
-        isPlaying = true;
-        musicToggle.classList.add("playing");
-        musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
-    }).catch(() => {
-        isPlaying = false;
-        musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
-    });
-});
+bgMusic.volume = 0.5;
 
-// Try autoplay on first user interaction
-document.addEventListener('click', () => {
+// Auto-start music
+const startMusic = () => {
     if (!isPlaying) {
         bgMusic.play().then(() => {
             isPlaying = true;
@@ -63,28 +53,28 @@ document.addEventListener('click', () => {
             musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
         }).catch(() => {});
     }
-}, { once: true });
+};
 
-musicToggle.addEventListener("click", () => {
+// Try autoplay immediately
+startMusic();
+
+// Retry on first interaction if failed
+document.body.addEventListener('click', startMusic, { once: true });
+document.body.addEventListener('touchstart', startMusic, { once: true });
+
+musicToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
     if (isPlaying) {
         bgMusic.pause();
         musicToggle.classList.remove("playing");
         musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        isPlaying = false;
     } else {
-        bgMusic.play();
-        musicToggle.classList.add("playing");
-        musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+        bgMusic.play().then(() => {
+            musicToggle.classList.add("playing");
+            musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+            isPlaying = true;
+        }).catch(() => {});
     }
-    isPlaying = !isPlaying;
 });
 
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
