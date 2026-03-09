@@ -52,27 +52,15 @@ setInterval(nextSlide, 4000);
 // Background Music Control
 const bgMusic = document.getElementById("bgMusic");
 const musicToggle = document.getElementById("musicToggle");
-let isPlaying = false;
+let isPlaying = true;
 
 bgMusic.volume = 0.5;
+musicToggle.classList.add("playing");
 
 // Auto-start music
-const startMusic = () => {
-    if (!isPlaying) {
-        bgMusic.play().then(() => {
-            isPlaying = true;
-            musicToggle.classList.add("playing");
-            musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
-        }).catch(() => {});
-    }
-};
-
-// Try autoplay immediately
-startMusic();
-
-// Retry on first interaction if failed
-document.body.addEventListener('click', startMusic, { once: true });
-document.body.addEventListener('touchstart', startMusic, { once: true });
+bgMusic.play().catch(() => {
+    document.body.addEventListener('click', () => bgMusic.play(), { once: true });
+});
 
 musicToggle.addEventListener("click", (e) => {
     e.stopPropagation();
