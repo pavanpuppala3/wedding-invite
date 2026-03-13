@@ -10,15 +10,17 @@ body {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     color: #333;
-    background: #faf9f6;
-    font-size: clamp(14px, 4vw, 16px);
+    background: linear-gradient(135deg, #faf9f6 0%, #f5f2ed 100%);
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    touch-action: pan-y;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 16px;
 }
 
 /* Hero Section */
@@ -31,7 +33,8 @@ body {
     text-align: center;
     color: white;
     overflow: hidden;
-    background: #fff;
+    background: #f5f5f5;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.1);
 }
 
 .hero-slide {
@@ -45,6 +48,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    padding: 1rem;
+    background-color: #000;
 }
 
 .hero-slide.active {
@@ -53,64 +61,94 @@ body {
 
 .hero-content {
     animation: fadeInUp 1.5s ease;
-    padding: 1.5rem;
+    padding: 0.6rem 0.6rem;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    backdrop-filter: none;
+    border: 2px solid rgba(255,255,255,0.5);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 10;
+    max-width: 80%;
+    width: 100%;
+    max-height: 85vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .ornament-top, .ornament-bottom {
-    font-size: clamp(1.5rem, 5vw, 3rem);
-    color: #d4af37;
-    margin: 0.8rem 0;
+    font-size: 1rem;
+    color: #ffd700;
+    margin: 0.15rem 0;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    animation: sparkle 2s ease-in-out infinite;
 }
 
 .save-date {
-    font-size: clamp(0.65rem, 2vw, 0.9rem);
-    letter-spacing: 3px;
-    font-weight: 300;
-    margin-bottom: 0.8rem;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-bottom: 0.15rem;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .couple-names {
     font-family: 'Great Vibes', cursive;
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-size: 1.5rem;
     font-weight: 400;
-    margin: 1rem 0;
-    line-height: 1.3;
+    margin: 0.2rem 0;
+    line-height: 1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,215,0,0.5);
+    color: #ffd700;
 }
 
 .couple-names span {
-    font-size: clamp(1.5rem, 5vw, 3rem);
-    margin: 0 0.5rem;
+    font-size: 1rem;
+    margin: 0 0;
+    color: #fff;
+    display: block;
+    line-height: 1;
 }
 
 .telugu-blessing {
     font-family: 'Noto Sans Telugu', sans-serif;
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    margin-top: 0.8rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
     letter-spacing: 1px;
 }
 
 /* Music Button */
 .music-btn {
     position: fixed;
-    top: 15px;
-    right: 15px;
+    top: 16px;
+    right: 16px;
     z-index: 1000;
-    background: rgba(212, 175, 55, 0.9);
+    background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
     color: white;
-    border: 2px solid white;
-    width: 50px;
-    height: 50px;
+    border: 3px solid white;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    font-size: 1.2rem;
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
     transition: all 0.3s;
     touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.music-btn:hover {
-    transform: scale(1.1);
-    background: rgba(212, 175, 55, 1);
+@media (hover: hover) {
+    .music-btn:hover {
+        transform: scale(1.15);
+        box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+    }
+}
+
+.music-btn:active {
+    transform: scale(0.95);
 }
 
 .music-btn.playing {
@@ -122,60 +160,87 @@ body {
 /* Invitation Card */
 .invitation-card {
     padding: 2.5rem 0;
-    background: #faf9f6;
+    background: linear-gradient(135deg, #faf9f6 0%, #f5f2ed 100%);
+    position: relative;
 }
 
 .card {
     background: white;
-    border-radius: 15px;
-    padding: 2rem 1.2rem;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    padding: 2rem 1.25rem;
+    box-shadow: 0 15px 60px rgba(0,0,0,0.15);
     text-align: center;
-    max-width: 900px;
+    max-width: 950px;
     margin: 0 auto;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #d4af37, #ffd700, #d4af37);
 }
 
 .card-header i {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     color: #d4af37;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+    animation: heartbeat 1.5s ease-in-out infinite;
 }
 
 .telugu-title {
     font-family: 'Noto Sans Telugu', sans-serif;
-    font-size: clamp(1.2rem, 4vw, 2rem);
+    font-size: 1.4rem;
     color: #8b7355;
-    margin-bottom: 1.2rem;
-    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+    font-weight: 600;
 }
 
 .invitation-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(0.95rem, 3vw, 1.3rem);
-    color: #666;
-    margin-bottom: 2rem;
+    font-size: 1.05rem;
+    color: #555;
+    margin-bottom: 1.5rem;
     line-height: 1.7;
 }
 
 .event-details {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
 }
 
 .event-box {
-    background: #f8f6f3;
-    padding: 1.8rem 1.3rem;
-    border-radius: 12px;
+    background: linear-gradient(135deg, #f8f6f3 0%, #faf9f6 100%);
+    padding: 1.5rem 1.25rem;
+    border-radius: 15px;
     border: 2px solid #e8e3db;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+@media (hover: hover) {
+    .event-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        border-color: #d4af37;
+    }
 }
 
 .event-box h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+    font-size: 1.4rem;
     color: #8b7355;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
 }
 
 .event-box h3 i {
@@ -184,90 +249,113 @@ body {
 }
 
 .event-date {
-    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-size: 1.05rem;
     font-weight: 600;
     color: #333;
-    margin: 0.8rem 0;
+    margin: 0.75rem 0;
 }
 
 .event-time {
-    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    font-size: 0.95rem;
     color: #666;
     margin: 0.5rem 0;
 }
 
 .event-venue {
-    font-size: clamp(0.95rem, 3vw, 1.1rem);
+    font-size: 1rem;
     color: #8b7355;
-    margin: 0.8rem 0;
+    margin: 0.75rem 0;
     font-weight: 600;
 }
 
 .map-btn {
     display: inline-block;
-    margin-top: 1rem;
-    padding: 0.9rem 2rem;
-    background: #d4af37;
+    margin-top: 0.75rem;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
     color: white;
     text-decoration: none;
-    border-radius: 25px;
+    border-radius: 30px;
     font-size: 0.95rem;
+    font-weight: 600;
     transition: all 0.3s;
     touch-action: manipulation;
-    min-height: 44px;
+    min-height: 48px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    -webkit-tap-highlight-color: transparent;
 }
 
-.map-btn:hover {
-    background: #b8941f;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+@media (hover: hover) {
+    .map-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+    }
+}
+
+.map-btn:active {
+    transform: scale(0.97);
 }
 
 /* Countdown Section */
 .countdown-section {
     padding: 2.5rem 0;
-    background: white;
+    background: linear-gradient(135deg, #fff 0%, #faf9f6 100%);
     text-align: center;
+    position: relative;
 }
 
 .countdown-section h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-size: 1.75rem;
     color: #8b7355;
     margin-bottom: 2rem;
+    font-weight: 700;
+    padding: 0 1rem;
 }
 
 .countdown {
     display: flex;
     justify-content: center;
-    gap: 0.8rem;
+    gap: 0.625rem;
     flex-wrap: wrap;
+    padding: 0 0.5rem;
 }
 
 .countdown-item {
-    background: #f8f6f3;
-    padding: 1.2rem 0.8rem;
+    background: linear-gradient(135deg, #fff 0%, #f8f6f3 100%);
+    padding: 1.25rem 0.75rem;
     border-radius: 12px;
     min-width: 70px;
     flex: 1;
     max-width: 85px;
-    border: 2px solid #e8e3db;
+    border: 2px solid #d4af37;
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.15);
+    transition: all 0.3s ease;
+}
+
+@media (hover: hover) {
+    .countdown-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+    }
 }
 
 .countdown-value {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    font-size: 2.25rem;
     font-weight: 700;
     color: #d4af37;
     display: block;
+    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+    line-height: 1;
 }
 
 .countdown-label {
-    font-size: clamp(0.6rem, 2vw, 0.9rem);
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     color: #666;
-    margin-top: 0.4rem;
+    margin-top: 0.5rem;
 }
 
 /* Gallery - Removed (not in use) */
@@ -277,24 +365,27 @@ footer {
     background: linear-gradient(135deg, #8b7355 0%, #6b5744 100%);
     color: white;
     text-align: center;
-    padding: 2.5rem 1.5rem;
+    padding: 2.5rem 1.25rem;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
 }
 
 .telugu-footer {
     font-family: 'Noto Sans Telugu', sans-serif;
-    font-size: clamp(1.1rem, 3.5vw, 1.5rem);
-    margin-bottom: 0.8rem;
-    line-height: 1.5;
+    font-size: 1.25rem;
+    margin-bottom: 0.875rem;
+    line-height: 1.6;
+    color: #ffd700;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .footer-text {
-    font-size: clamp(0.85rem, 2.5vw, 1rem);
-    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
     opacity: 0.9;
 }
 
 .footer-hearts {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .footer-hearts i {
@@ -330,40 +421,215 @@ footer {
 
 @keyframes heartbeat {
     0%, 100% { transform: scale(1); }
-    25% { transform: scale(1.3); }
+    25% { transform: scale(1.2); }
     50% { transform: scale(1); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Couple Highlight */
+.couple-highlight h2 {
+    animation: fadeInUp 1s ease;
+}
+
+/* Scroll Animation */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.event-box:nth-child(1) {
+    animation: slideInLeft 0.8s ease;
+}
+
+.event-box:nth-child(2) {
+    animation: slideInRight 0.8s ease;
 }
 
 /* Tablet & Desktop */
 @media (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    
+    .container {
+        padding: 0 24px;
+    }
+    
+    .hero-slide {
+        padding: 2rem;
+        align-items: flex-end;
+    }
+    
+    .hero-content {
+        padding: 3rem 4rem;
+        max-width: none;
+        background: rgba(255,255,255,0.2);
+    }
+    
+    .ornament-top, .ornament-bottom {
+        font-size: 3rem;
+        margin: 0.8rem 0;
+    }
+    
+    .save-date {
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+        margin-bottom: 0.8rem;
+    }
+    
+    .telugu-blessing {
+        font-size: 1.5rem;
+        margin-top: 0.8rem;
+    }
+    
+    .couple-names {
+        font-size: 5.5rem;
+        margin: 1.5rem 0;
+    }
+    
+    .couple-names span {
+        font-size: 3rem;
+        margin: 0.2rem 0;
+    }
+    
+    .music-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.3rem;
+        top: 20px;
+        right: 20px;
+    }
+    
+    .invitation-card {
+        padding: 5rem 0;
+    }
+    
     .card {
-        padding: 3rem 2.5rem;
+        padding: 4rem 3rem;
+    }
+    
+    .card-header i {
+        font-size: 2.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .telugu-title {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .invitation-text {
+        font-size: 1.35rem;
+        margin-bottom: 2rem;
+        line-height: 1.8;
     }
     
     .event-details {
         grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+        gap: 2.5rem;
+        margin-top: 2rem;
     }
     
     .event-box {
-        padding: 2.5rem 2rem;
+        padding: 3rem 2.5rem;
     }
     
-    .countdown {
-        gap: 2rem;
+    .event-box h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
     }
     
-    .countdown-item {
-        padding: 2rem;
-        min-width: 120px;
-        max-width: none;
+    .event-date {
+        font-size: 1.2rem;
+        margin: 0.8rem 0;
     }
     
-    .invitation-card, .countdown-section {
-        padding: 4rem 0;
+    .event-time {
+        font-size: 1rem;
+    }
+    
+    .event-venue {
+        font-size: 1.1rem;
+        margin: 0.8rem 0;
+    }
+    
+    .map-btn {
+        padding: 1rem 2.5rem;
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .countdown-section {
+        padding: 5rem 0;
     }
     
     .countdown-section h2 {
-        margin-bottom: 3rem;
+        font-size: 3rem;
+        margin-bottom: 4rem;
+    }
+    
+    .countdown {
+        gap: 2.5rem;
+    }
+    
+    .countdown-item {
+        padding: 2.5rem 2rem;
+        min-width: 140px;
+        max-width: none;
+    }
+    
+    .countdown-value {
+        font-size: 4rem;
+    }
+    
+    .countdown-label {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        margin-top: 0.4rem;
+    }
+    
+    footer {
+        padding: 3rem 1.5rem;
+    }
+    
+    .telugu-footer {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-text {
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .footer-hearts {
+        font-size: 1.3rem;
     }
 }
