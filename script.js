@@ -37,9 +37,10 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Hero Slider with fade effect
+// Hero Slider with fade effect and auto-play
 let currentSlide = 0;
 const slides = document.querySelectorAll('.hero-slide');
+let slideInterval;
 
 function nextSlide() {
     slides[currentSlide].classList.remove('active');
@@ -47,23 +48,77 @@ function nextSlide() {
     slides[currentSlide].classList.add('active');
 }
 
-setInterval(nextSlide, 5000);
+function startSlideshow() {
+    slideInterval = setInterval(nextSlide, 5000);
+}
+
+function stopSlideshow() {
+    clearInterval(slideInterval);
+}
+
+// Start slideshow automatically
+startSlideshow();
+
+// Pause slideshow when page is hidden, resume when visible
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        stopSlideshow();
+    } else {
+        startSlideshow();
+    }
+});
+
+// Ensure slideshow continues on mobile
+window.addEventListener('focus', startSlideshow);
+window.addEventListener('blur', stopSlideshow);
 
 // Background Music Control with smooth transitions
 const bgMusic = document.getElementById("bgMusic");
 const musicToggle = document.getElementById("musicToggle");
-let isPlaying = true;
+let isPlaying = false;
+let userInteracted = false;
 
 bgMusic.volume = 0.4;
-musicToggle.classList.add("playing");
 
-// Auto-start music
-bgMusic.play().catch(() => {
-    document.body.addEventListener('click', () => bgMusic.play(), { once: true });
-});
+// Try to auto-start music
+function attemptAutoplay() {
+    bgMusic.play().then(() => {
+        isPlaying = true;
+        musicToggle.classList.add("playing");
+        musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+    }).catch(() => {
+        // Autoplay blocked, wait for user interaction
+        isPlaying = false;
+        musicToggle.classList.remove("playing");
+        musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    });
+}
+
+attemptAutoplay();
+
+// Start music on first user interaction
+function startMusicOnInteraction() {
+    if (!userInteracted) {
+        userInteracted = true;
+        if (!isPlaying) {
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                musicToggle.classList.add("playing");
+                musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+            }).catch(() => {});
+        }
+    }
+}
+
+// Listen for any user interaction
+document.body.addEventListener('click', startMusicOnInteraction, { once: true });
+document.body.addEventListener('touchstart', startMusicOnInteraction, { once: true });
+document.body.addEventListener('scroll', startMusicOnInteraction, { once: true });
 
 musicToggle.addEventListener("click", (e) => {
     e.stopPropagation();
+    userInteracted = true;
+    
     if (isPlaying) {
         bgMusic.pause();
         musicToggle.classList.remove("playing");
