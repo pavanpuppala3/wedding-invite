@@ -11,7 +11,7 @@ body {
     line-height: 1.6;
     color: #333;
     background: #faf9f6;
-    font-size: 16px;
+    font-size: clamp(14px, 4vw, 16px);
     -webkit-font-smoothing: antialiased;
 }
 
@@ -57,13 +57,13 @@ body {
 }
 
 .ornament-top, .ornament-bottom {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 5vw, 3rem);
     color: #d4af37;
     margin: 0.8rem 0;
 }
 
 .save-date {
-    font-size: 0.75rem;
+    font-size: clamp(0.65rem, 2vw, 0.9rem);
     letter-spacing: 3px;
     font-weight: 300;
     margin-bottom: 0.8rem;
@@ -71,20 +71,20 @@ body {
 
 .couple-names {
     font-family: 'Great Vibes', cursive;
-    font-size: 2.5rem;
+    font-size: clamp(2.5rem, 8vw, 5rem);
     font-weight: 400;
     margin: 1rem 0;
     line-height: 1.3;
 }
 
 .couple-names span {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 5vw, 3rem);
     margin: 0 0.5rem;
 }
 
 .telugu-blessing {
     font-family: 'Noto Sans Telugu', sans-serif;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 3vw, 1.5rem);
     margin-top: 0.8rem;
     letter-spacing: 1px;
 }
@@ -143,7 +143,7 @@ body {
 
 .telugu-title {
     font-family: 'Noto Sans Telugu', sans-serif;
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 4vw, 2rem);
     color: #8b7355;
     margin-bottom: 1.2rem;
     line-height: 1.5;
@@ -151,7 +151,7 @@ body {
 
 .invitation-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem;
+    font-size: clamp(0.95rem, 3vw, 1.3rem);
     color: #666;
     margin-bottom: 2rem;
     line-height: 1.7;
@@ -173,7 +173,7 @@ body {
 
 .event-box h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 3.5vw, 1.6rem);
     color: #8b7355;
     margin-bottom: 1.2rem;
 }
@@ -184,20 +184,20 @@ body {
 }
 
 .event-date {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 3vw, 1.2rem);
     font-weight: 600;
     color: #333;
     margin: 0.8rem 0;
 }
 
 .event-time {
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
     color: #666;
     margin: 0.5rem 0;
 }
 
 .event-venue {
-    font-size: 1.05rem;
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
     color: #8b7355;
     margin: 0.8rem 0;
     font-weight: 600;
@@ -232,7 +232,7 @@ body {
 
 .countdown-section h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     color: #8b7355;
     margin-bottom: 2rem;
 }
@@ -256,14 +256,14 @@ body {
 
 .countdown-value {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
     font-weight: 700;
     color: #d4af37;
     display: block;
 }
 
 .countdown-label {
-    font-size: 0.65rem;
+    font-size: clamp(0.6rem, 2vw, 0.9rem);
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #666;
@@ -282,13 +282,13 @@ footer {
 
 .telugu-footer {
     font-family: 'Noto Sans Telugu', sans-serif;
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 3.5vw, 1.5rem);
     margin-bottom: 0.8rem;
     line-height: 1.5;
 }
 
 .footer-text {
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
     margin-bottom: 1.2rem;
     opacity: 0.9;
 }
@@ -336,36 +336,8 @@ footer {
 
 /* Tablet & Desktop */
 @media (min-width: 768px) {
-    .couple-names {
-        font-size: 4rem;
-    }
-    
-    .couple-names span {
-        font-size: 2.5rem;
-    }
-    
-    .telugu-blessing {
-        font-size: 1.5rem;
-    }
-    
-    .ornament-top, .ornament-bottom {
-        font-size: 3rem;
-    }
-    
-    .save-date {
-        font-size: 0.9rem;
-    }
-    
     .card {
         padding: 3rem 2.5rem;
-    }
-    
-    .telugu-title {
-        font-size: 2rem;
-    }
-    
-    .invitation-text {
-        font-size: 1.3rem;
     }
     
     .event-details {
@@ -387,30 +359,11 @@ footer {
         max-width: none;
     }
     
-    .countdown-value {
-        font-size: 3.5rem;
-    }
-    
-    .countdown-label {
-        font-size: 0.9rem;
-    }
-    
     .invitation-card, .countdown-section {
         padding: 4rem 0;
     }
     
     .countdown-section h2 {
-        font-size: 2.5rem;
         margin-bottom: 3rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .couple-names {
-        font-size: 5rem;
-    }
-    
-    .couple-names span {
-        font-size: 3rem;
     }
 }
