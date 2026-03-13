@@ -11,16 +11,30 @@ body {
     line-height: 1.6;
     color: #333;
     background: linear-gradient(135deg, #faf9f6 0%, #f5f2ed 100%);
-    font-size: 16px;
+    font-size: clamp(14px, 4vw, 16px);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     touch-action: pan-y;
+    min-width: 320px;
+}
+
+/* Small screen adjustments */
+@media (max-width: 360px) {
+    body {
+        font-size: clamp(13px, 4.5vw, 16px);
+    }
+}
+
+@media (max-width: 320px) {
+    body {
+        font-size: clamp(12px, 5vw, 16px);
+    }
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0 clamp(12px, 3vw, 24px);
 }
 
 /* Hero Section */
@@ -51,7 +65,7 @@ body {
     background-size: contain !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
-    padding: 1rem;
+    padding: 0.5rem;
     background-color: #000;
 }
 
@@ -61,55 +75,85 @@ body {
 
 .hero-content {
     animation: fadeInUp 1.5s ease;
-    padding: 0.6rem 0.6rem;
+    padding: clamp(0.4rem, 2vw, 3rem);
     background: rgba(255,255,255,0.15);
-    border-radius: 12px;
+    border-radius: 10px;
     backdrop-filter: none;
     border: 2px solid rgba(255,255,255,0.5);
     box-shadow: 0 8px 32px rgba(0,0,0,0.15);
     position: relative;
     z-index: 10;
-    max-width: 80%;
+    max-width: clamp(75%, 80vw, 90%);
     width: 100%;
-    max-height: 85vh;
+    max-height: 75vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 360px) {
+    .hero-content {
+        max-width: 85%;
+        max-height: 70vh;
+        padding: clamp(0.35rem, 1.8vw, 0.6rem);
+    }
+}
+
+@media (max-width: 320px) {
+    .hero-content {
+        max-width: 90%;
+        max-height: 68vh;
+        padding: clamp(0.3rem, 1.5vw, 0.5rem);
+    }
+}
+
+@media (min-width: 360px) {
+    .hero-content {
+        padding: 0.6rem;
+    }
+}
+
+@media (min-width: 400px) {
+    .hero-content {
+        padding: 0.7rem;
+        max-width: 80%;
+    }
 }
 
 .ornament-top, .ornament-bottom {
-    font-size: 1rem;
+    font-size: clamp(0.75rem, 2.8vw, 3rem);
     color: #ffd700;
-    margin: 0.15rem 0;
+    margin: clamp(0.08rem, 0.3vw, 0.8rem) 0;
     text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     animation: sparkle 2s ease-in-out infinite;
 }
 
 .save-date {
-    font-size: 0.6rem;
-    letter-spacing: 1px;
+    font-size: clamp(0.5rem, 2vw, 0.9rem);
+    letter-spacing: clamp(0.5px, 0.4vw, 4px);
     font-weight: 400;
-    margin-bottom: 0.15rem;
+    margin-bottom: clamp(0.08rem, 0.3vw, 0.8rem);
     text-transform: uppercase;
     text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .couple-names {
     font-family: 'Great Vibes', cursive;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 4.5vw, 5.5rem);
     font-weight: 400;
-    margin: 0.2rem 0;
+    margin: clamp(0.1rem, 0.4vw, 1.5rem) 0;
     line-height: 1;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,215,0,0.5);
     color: #ffd700;
 }
 
 .couple-names span {
-    font-size: 1rem;
-    margin: 0 0;
+    font-size: clamp(0.8rem, 2.8vw, 3rem);
+    margin: 0 clamp(0.15rem, 0.5vw, 0.8rem);
     color: #fff;
-    display: block;
+    display: inline;
     line-height: 1;
 }
 
@@ -167,7 +211,7 @@ body {
 .card {
     background: white;
     border-radius: 20px;
-    padding: 2rem 1.25rem;
+    padding: clamp(1.5rem, 4vw, 4rem) clamp(1rem, 3vw, 3rem);
     box-shadow: 0 15px 60px rgba(0,0,0,0.15);
     text-align: center;
     max-width: 950px;
@@ -196,7 +240,7 @@ body {
 
 .telugu-title {
     font-family: 'Noto Sans Telugu', sans-serif;
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 4vw, 2.2rem);
     color: #8b7355;
     margin-bottom: 1.25rem;
     line-height: 1.6;
@@ -205,7 +249,7 @@ body {
 
 .invitation-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem;
+    font-size: clamp(0.95rem, 3vw, 1.35rem);
     color: #555;
     margin-bottom: 1.5rem;
     line-height: 1.7;
@@ -237,7 +281,7 @@ body {
 
 .event-box h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 3.5vw, 1.8rem);
     color: #8b7355;
     margin-bottom: 1.25rem;
     font-weight: 700;
@@ -249,20 +293,20 @@ body {
 }
 
 .event-date {
-    font-size: 1.05rem;
+    font-size: clamp(0.95rem, 3vw, 1.2rem);
     font-weight: 600;
     color: #333;
     margin: 0.75rem 0;
 }
 
 .event-time {
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
     color: #666;
     margin: 0.5rem 0;
 }
 
 .event-venue {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
     color: #8b7355;
     margin: 0.75rem 0;
     font-weight: 600;
@@ -306,7 +350,7 @@ body {
 
 .countdown-section h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.75rem;
+    font-size: clamp(1.5rem, 5vw, 3rem);
     color: #8b7355;
     margin-bottom: 2rem;
     font-weight: 700;
@@ -342,7 +386,7 @@ body {
 
 .countdown-value {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.25rem;
+    font-size: clamp(1.8rem, 5vw, 4rem);
     font-weight: 700;
     color: #d4af37;
     display: block;
@@ -351,7 +395,7 @@ body {
 }
 
 .countdown-label {
-    font-size: 0.7rem;
+    font-size: clamp(0.6rem, 2vw, 0.9rem);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: #666;
@@ -491,31 +535,22 @@ footer {
         padding: 3rem 4rem;
         max-width: none;
         background: rgba(255,255,255,0.2);
+        max-height: none;
     }
     
     .ornament-top, .ornament-bottom {
-        font-size: 3rem;
         margin: 0.8rem 0;
     }
     
     .save-date {
-        font-size: 0.9rem;
-        letter-spacing: 4px;
         margin-bottom: 0.8rem;
     }
     
-    .telugu-blessing {
-        font-size: 1.5rem;
-        margin-top: 0.8rem;
-    }
-    
     .couple-names {
-        font-size: 5.5rem;
         margin: 1.5rem 0;
     }
     
     .couple-names span {
-        font-size: 3rem;
         margin: 0.2rem 0;
     }
     
@@ -541,12 +576,10 @@ footer {
     }
     
     .telugu-title {
-        font-size: 2.2rem;
         margin-bottom: 1.5rem;
     }
     
     .invitation-text {
-        font-size: 1.35rem;
         margin-bottom: 2rem;
         line-height: 1.8;
     }
@@ -562,21 +595,14 @@ footer {
     }
     
     .event-box h3 {
-        font-size: 1.8rem;
         margin-bottom: 1.5rem;
     }
     
     .event-date {
-        font-size: 1.2rem;
         margin: 0.8rem 0;
     }
     
-    .event-time {
-        font-size: 1rem;
-    }
-    
     .event-venue {
-        font-size: 1.1rem;
         margin: 0.8rem 0;
     }
     
@@ -591,7 +617,6 @@ footer {
     }
     
     .countdown-section h2 {
-        font-size: 3rem;
         margin-bottom: 4rem;
     }
     
@@ -605,12 +630,7 @@ footer {
         max-width: none;
     }
     
-    .countdown-value {
-        font-size: 4rem;
-    }
-    
     .countdown-label {
-        font-size: 0.9rem;
         letter-spacing: 1px;
         margin-top: 0.4rem;
     }
@@ -620,16 +640,128 @@ footer {
     }
     
     .telugu-footer {
-        font-size: 1.6rem;
         margin-bottom: 1rem;
     }
     
     .footer-text {
-        font-size: 1rem;
         margin-bottom: 1.2rem;
     }
+}
+
+/* Large Desktop & High Resolution */
+@media (min-width: 1200px) {
+    .hero-content {
+        padding: 4rem 5rem;
+    }
     
-    .footer-hearts {
-        font-size: 1.3rem;
+    .card {
+        padding: 5rem 4rem;
+    }
+    
+    .invitation-card {
+        padding: 6rem 0;
+    }
+    
+    .countdown-section {
+        padding: 6rem 0;
+    }
+    
+    .event-box {
+        padding: 3.5rem 3rem;
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1400px;
+        padding: 0 40px;
+    }
+    
+    .hero-content {
+        padding: 5rem 6rem;
+    }
+    
+    .card {
+        max-width: 1100px;
+        padding: 6rem 5rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1600px;
+        padding: 0 60px;
+    }
+    
+    .hero-content {
+        padding: 6rem 8rem;
+    }
+    
+    .card {
+        max-width: 1300px;
+        padding: 7rem 6rem;
+    }
+    
+    .invitation-card {
+        padding: 8rem 0;
+    }
+    
+    .countdown-section {
+        padding: 8rem 0;
+    }
+    
+    .event-box {
+        padding: 4rem 3.5rem;
+    }
+    
+    .countdown-item {
+        padding: 3rem 2.5rem;
+        min-width: 160px;
+    }
+}
+
+/* 4K and Ultra High Resolution */
+@media (min-width: 2560px) {
+    body {
+        font-size: 18px;
+    }
+    
+    .container {
+        max-width: 2000px;
+        padding: 0 80px;
+    }
+    
+    .hero-content {
+        padding: 8rem 10rem;
+    }
+    
+    .card {
+        max-width: 1600px;
+        padding: 8rem 7rem;
+    }
+    
+    .music-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 1.5rem;
+    }
+    
+    .card-header i {
+        font-size: 3.5rem;
+    }
+    
+    .event-box {
+        padding: 5rem 4rem;
+    }
+    
+    .countdown-item {
+        padding: 3.5rem 3rem;
+        min-width: 180px;
+    }
+    
+    .map-btn {
+        padding: 1.2rem 3rem;
+        font-size: 1.1rem;
+        min-height: 56px;
     }
 }
