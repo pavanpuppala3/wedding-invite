@@ -76,11 +76,11 @@ body {
 .hero-content {
     animation: fadeInUp 1.5s ease;
     padding: clamp(0.4rem, 2vw, 3rem);
-    background: rgba(255,255,255,0.15);
+    background: transparent;
     border-radius: 10px;
     backdrop-filter: none;
-    border: 2px solid rgba(255,255,255,0.5);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    border: none;
+    box-shadow: none;
     position: relative;
     z-index: 10;
     max-width: clamp(75%, 80vw, 90%);
@@ -534,7 +534,7 @@ footer {
     .hero-content {
         padding: 3rem 4rem;
         max-width: none;
-        background: rgba(255,255,255,0.2);
+        background: transparent;
         max-height: none;
     }
     
